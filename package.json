@@ -1,0 +1,56 @@
+{
+  "name": "wrapper-spotify",
+  "version": "1.0.0",
+  "description": "A wrapper to work with the Spotify Web API",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf lib",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/*.js",
+    "prepush": "npm run lint && npm run test:coverage",
+    "test": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register",
+    "test:tdd": "./node_modules/.bin/mocha test/**/*.spec.js --require babel-register --watch",
+    "test:coverage": "nyc npm test"
+  },
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "test/**"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoromeiro/wrapper-spotify.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Bruno Romeiro <bruno.romeiro@gmail.com> (http://brunoromeiro.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunoromeiro/wrapper-spotify/issues"
+  },
+  "homepage": "https://github.com/brunoromeiro/wrapper-spotify#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.3.2",
+    "babel-register": "^6.24.0",
+    "chai": "^3.5.0",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.1",
+    "husky": "^0.11.9",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "rimraf": "^2.6.1"
+  }
+}
