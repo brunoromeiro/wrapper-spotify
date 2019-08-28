@@ -15,6 +15,9 @@
     "coveralls": "npm run test:coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
     "reporter": [
       "text",
       "html"
